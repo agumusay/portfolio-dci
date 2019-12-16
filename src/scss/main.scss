@@ -1,6 +1,15 @@
 // This is where you can import other stylesheets or write your scss code
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+@mixin delay($rule, $number, $value) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      -webkit-#{$rule}-delay: (#{$i * $value});
+      #{$rule}-delay: (#{$i * $value});
+    }
+  }
+}
+
 @mixin long-shadow(
   $type,
   $color,
@@ -101,8 +110,8 @@
     text-shadow: $shadow;
   }
 }
-$color-passive: hsl(210, 100%, 30%);
-$color-active: hsl(172, 98%, 55%);
+$color-passive: hsl(210, 100%, 20%);
+$color-active: hsl(194, 100%, 47%);
 $color-button: orange;
 $font-header: "Orbitron";
 $font-second: monospace;
@@ -123,14 +132,20 @@ h6 {
   font-family: $font-second;
   color: rgb(54, 54, 54);
 }
-
+html {
+  background-color: $color-active;
+}
 body {
   position: relative;
   width: 100%;
+  background-color: $color-active;
 }
-
+.jumbotron {
+  background-color: $color-active;
+}
 section {
   height: 100vh;
+  background-color: $color-active;
 }
 
 #myScrollSpy {
@@ -155,7 +170,7 @@ section {
 }
 
 i {
-  font-size: 1.8rem;
+  font-size: 1.3em;
   @include font-shadow;
   color: $color-passive;
 }
