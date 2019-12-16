@@ -1,0 +1,184 @@
+// This is where you can import other stylesheets or write your scss code
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@mixin long-shadow(
+  $type,
+  $color,
+  $length,
+  $fadeout: true,
+  $skew: false,
+  $direction: right
+) {
+  $shadow: "";
+  @if $skew == false or $type == text {
+    @if $direction == right {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow + $i + "px " + $i + "px 0 " + $color + ",";
+      }
+    }
+    @if $direction == left {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow + $i * -1 + "px " + $i + "px 0 " + $color + ",";
+      }
+    }
+  }
+
+  @if $fadeout == true {
+    @for $i from 1 to $length - 1 {
+      @if $type == text or $skew == false {
+        @if $direction == right {
+          $shadow: $shadow +
+            $i +
+            "px " +
+            $i +
+            "px 0 " +
+            rgba($color, 1 - $i / $length) +
+            ",";
+        }
+        @if $direction == left {
+          $shadow: $shadow +
+            $i *
+            -1 +
+            "px " +
+            $i +
+            "px 0 " +
+            rgba($color, 1 - $i / $length) +
+            ",";
+        }
+      }
+      @if ($type == box) and $skew == true {
+        @if $direction == right {
+          $shadow: $shadow +
+            $i +
+            "px " +
+            $i +
+            "px 0 " +
+            $i *
+            0.2 +
+            "px " +
+            rgba($color, 1 - $i / $length) +
+            ",";
+        }
+        @if $direction == left {
+          $shadow: $shadow +
+            $i *
+            -1 +
+            "px " +
+            $i +
+            "px 0 " +
+            $i *
+            0.2 +
+            "px " +
+            rgba($color, 1 - $i / $length) +
+            ",";
+        }
+      }
+    }
+    $shadow: $shadow + $length + "px " + $length + "px 0 " + rgba($color, 0);
+  }
+  @if $fadeout == false {
+    @if $skew == true and ($type == box) {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow +
+          $i +
+          "px " +
+          $i +
+          "px 0 " +
+          $i *
+          0.1 +
+          "px " +
+          $color +
+          ",";
+      }
+    }
+    $shadow: $shadow + $length + "px " + $length + "px 0 " + rgba(0, 0, 0, 0);
+  }
+  $shadow: unquote($shadow);
+  @if $type == "box" {
+    box-shadow: $shadow;
+  }
+  @if $type == "text" {
+    text-shadow: $shadow;
+  }
+}
+$color-passive: hsl(210, 100%, 30%);
+$color-active: hsl(172, 98%, 55%);
+$color-button: orange;
+$font-header: "Orbitron";
+$font-second: monospace;
+@mixin font-shadow {
+  text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0, hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-header;
+  @include font-shadow;
+}
+
+* {
+  font-family: $font-second;
+  color: rgb(54, 54, 54);
+}
+
+body {
+  position: relative;
+  width: 100%;
+}
+
+section {
+  height: 100vh;
+}
+
+#myScrollSpy {
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  z-index: 2;
+  background-color: $color-passive;
+}
+
+.nav-link,
+.btn {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 50px;
+  height: 50px;
+  background-color: $color-button;
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.7);
+  padding: 20px;
+}
+
+i {
+  font-size: 1.8rem;
+  @include font-shadow;
+  color: $color-passive;
+}
+i:hover {
+  color: $color-active;
+}
+
+.active {
+  transform: scale(0.9);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.486),
+    0px 0px 15px rgba(0, 0, 0, 0.534);
+}
+
+.active i {
+  color: $color-active;
+}
+.links:active {
+  transform: scale(0.6);
+  box-shadow: none;
+}
+
+.display-4 {
+  font-family: $font-header;
+  color: $color-button;
+  @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
+}
