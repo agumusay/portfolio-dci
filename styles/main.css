@@ -9890,6 +9890,10 @@ section {
   padding: 20px;
 }
 
+.links {
+  font-size: 1.4rem;
+}
+
 i {
   font-size: 1.3em;
   text-shadow: rgba(102, 102, 102, 0.5) 0 -1px 0, rgba(255, 255, 255, 0.6) 0 2px 1px;
