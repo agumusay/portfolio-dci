@@ -1,6 +1,8 @@
 // This is where you can import other stylesheets or write your scss code
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
+* {
+  box-sizing: border-box !important;
+}
 $enable-responsive-font-sizes: true;
 $grid-columns: 14;
 $grid-gutter-width: 0px;
@@ -159,7 +161,7 @@ body {
   background-color: $color-active;
 }
 section {
-  height: 92vh;
+  height: 90vh;
   background-color: $color-active;
 }
 .hero {
@@ -263,11 +265,21 @@ svg {
 }
 .pro {
   background: $color-button;
+  flex-shrink: 0;
+  width: 25em;
+  height: 35em;
   margin: 0;
   z-index: 3;
   position: relative;
-  transform: scale(0.8);
+  transform: scale(0.7);
   transition: all 0.3s ease-in-out;
+  box-shadow: 3em 3em rgba(255, 255, 255, 0.3),
+    -3em -3em rgba(255, 255, 255, 0.3), 2px 2px 5px white inset,
+    -2px -2px 5px white inset, 1em 1em rgb(180, 0, 0), 2em 2em rgb(216, 1, 1),
+    3em 3em rgb(255, 0, 0), -1em -1em rgb(180, 0, 0), -2em -2em rgb(216, 1, 1),
+    -3em -3em rgb(255, 0, 0), 1em -1em rgb(180, 0, 0), 2em -2em rgb(216, 1, 1),
+    3em -3em rgb(255, 0, 0), -1em 1em rgb(180, 0, 0), -2em 2em rgb(216, 1, 1),
+    -3em 3em rgb(255, 0, 0);
 
   &::after {
     content: "";
@@ -298,8 +310,7 @@ svg {
     height: 60%;
   }
   &:hover {
-    transform: scale(1);
-    flex-shrink: 0;
+    transform: scale(0.9);
   }
 }
 
@@ -308,23 +319,17 @@ svg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 200px;
+  padding: 0 100px;
 }
 .projects-container {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(200px, 300px));
-  grid-template-rows: minmax(300px, 500px);
-  grid-gap: 10px;
-  height: 100%;
-  perspective: 500px;
-  width: 80%;
-  padding-left: 5px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 90%;
   overflow-x: scroll;
-  margin-top: 100px;
-}
-.pro {
   background-color: red;
 }
+
 .lead,
 p {
   @include font-shadow;
@@ -333,10 +338,57 @@ p {
 
 .projects-header {
   color: $color-passive;
-  background-color: $color-button;
   padding: 0;
-  display: inline-block;
-  height: 2rem;
   padding: 10px;
-  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
+}
+
+@mixin center-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.project1 {
+  background: url(/images/proccessing.gif);
+  @include center-image;
+}
+.project2 {
+  background: url(/images/bennys-burger.gif);
+  @include center-image;
+}
+
+.project3 {
+  background: url(/images/grid-message.gif);
+  @include center-image;
+}
+
+.project4 {
+  background: url(/images/responsive-hero.gif);
+  @include center-image;
+}
+.project5 {
+  background: url(/images/city-trips.gif);
+  @include center-image;
+}
+
+.project6 {
+  background: url(/images/kpi-list.gif);
+  @include center-image;
+}
+.project7 {
+  background: url(/images/ball-animation.gif);
+  @include center-image;
+}
+.project8 {
+  background: url(/images/author-card.gif);
+  @include center-image;
+}
+
+.project9 {
+  background: url(/images/random-bars.gif);
+  @include center-image;
+}
+
+.project10 {
+  background: url(/images/travel-form.gif);
+  @include center-image;
 }
