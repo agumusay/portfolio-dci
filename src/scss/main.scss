@@ -159,14 +159,12 @@ body {
   background-color: $color-active;
 }
 section {
-  height: 94vh;
+  height: 92vh;
   background-color: $color-active;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-
+.hero {
+  margin-top: 150px;
+}
 #myScrollSpy {
   position: fixed;
   right: 0;
@@ -175,8 +173,7 @@ section {
   background-color: $color-passive;
 }
 
-.nav-link,
-.btn {
+.nav-link {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -197,6 +194,10 @@ i {
 }
 i:hover {
   color: $color-active;
+}
+
+.links i {
+  font-size: 3rem;
 }
 
 .active {
@@ -221,20 +222,21 @@ i:hover {
 }
 
 .d-flex {
-  background-color: $color-passive;
+  background-color: $color-button;
+  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
 }
 svg {
   overflow: hidden;
 }
 .red-bar {
-  opacity: 0;
-  animation: first-svg-animation 0.3s linear infinite;
+  animation: first-svg-animation 0.8s linear infinite;
   @include delay(animation, 14, 0.2s);
+  opacity: 0;
 }
 
 .square {
   opacity: 0;
-  animation: first-svg-animation 0.5s linear infinite;
+  animation: second-svg-animation 1s linear infinite;
 }
 
 @keyframes first-svg-animation {
@@ -245,7 +247,7 @@ svg {
 
 @keyframes second-svg-animation {
   to {
-    transform: rotate(0deg);
+    opacity: 1;
   }
 }
 .shadowc {
@@ -259,16 +261,14 @@ svg {
   filter: blur(15px);
   transition: all 0.3s ease-in-out;
 }
-.card {
+.pro {
   background: $color-button;
   margin: 0;
   z-index: 3;
   position: relative;
-  border: none;
-  box-shadow: 0px 1px rgb(158, 103, 0), 0px 2px rgb(158, 103, 0),
-    0px 3px rgb(158, 103, 0), 0px 4px rgb(158, 103, 0);
-  transform: scale(0.8) rotateX(0deg);
+  transform: scale(0.8);
   transition: all 0.3s ease-in-out;
+
   &::after {
     content: "";
     width: 100%;
@@ -298,21 +298,45 @@ svg {
     height: 60%;
   }
   &:hover {
-    z-index: 2;
-    transform: translateZ(0) rotate(0);
+    transform: scale(1);
+    flex-shrink: 0;
   }
 }
 
-img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+#projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
-.cards {
+.projects-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  height: 50%;
+  grid-template-columns: repeat(12, minmax(200px, 300px));
+  grid-template-rows: minmax(300px, 500px);
+  grid-gap: 10px;
+  height: 100%;
   perspective: 500px;
   width: 80%;
+  padding-left: 5px;
+  overflow: hidden;
+  overflow-x: scroll;
+  margin-top: 100px;
+}
+.pro {
+  background-color: red;
+}
+.lead,
+p {
+  @include font-shadow;
+  color: $color-passive;
+}
+
+.projects-header {
+  color: $color-passive;
+  background-color: $color-button;
+  padding: 0;
+  display: inline-block;
+  height: 2rem;
+  padding: 10px;
+  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
 }
