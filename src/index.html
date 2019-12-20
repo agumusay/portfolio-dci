@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body
-    class="container-fluid p-0 text-center mr-5 pb-5"
+    class="container-fluid p-0 text-center mr-5"
     data-spy="scroll"
     data-target=".navbar"
     data-offset="200"
   >
-    <main class="container-fluid">
-      <nav id="myScrollSpy" class="navbar p-0">
+    <main class="container-fluid h-100">
+      <nav id="myScrollSpy" class="navbar p-0 h-100">
         <ul class="navbar-nav">
           <li class="nav-item py-3">
             <a class="nav-link " href="#profile"><i class="fas fa-user"></i></a>
@@ -42,9 +42,7 @@
         <div
           class="row justify-content-center align-items-center p-0 mr-5 hero"
         >
-          <div
-            class="img-svg2 col-12 col-md-9 col-lg-6 pt-0 pt-lg-0 pb-lg-5 pt-sm-3"
-          >
+          <div class="img-svg2 col-12 col-md-9 col-lg-6 pt-0 pt-lg-0 pb-lg-5 ">
             <svg
               class="col-11"
               version="1.1"
@@ -236,11 +234,8 @@
 
       <section class="pt-5 pr-5 container-fluid" id="projects">
         <div class="content-container">
-          <h1 class="pb-5  display-4">School Projects</h1>
-          <div class="icon-container">
-            <i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i>
-            <i class="fab fa-sass"></i> <i class="fab fa-bootstrap"></i>
-          </div>
+          <h1 class="display-4">School Projects</h1>
+
           <div class="img-svg2">
             <svg
               class="gear"
@@ -287,22 +282,144 @@
                 fill="rgba(0,0,0,0)"
               />
               <path
+                class="gear-outer-line"
                 d="m471.328125 277.023438c2.292969-20.695313 1.753906-41.609376-1.613281-62.15625l25.769531-24.714844c2.421875-2.324219 3.136719-5.910156 1.792969-8.980469l-28.839844-65.902344c-1.359375-3.109375-4.53125-5.019531-7.914062-4.769531l-35.671876 2.621094c-12.757812-16.511719-27.949218-30.984375-45.0625-42.921875l1.046876-35.636719c.101562-3.390625-1.949219-6.476562-5.113282-7.699219l-67.085937-25.886719c-3.152344-1.214843-6.730469-.320312-8.9375 2.238282l-23.105469 26.78125c-20.699219-2.296875-41.617188-1.757813-62.167969 1.601562l-24.714843-25.757812c-2.324219-2.421875-5.90625-3.136719-8.980469-1.789063l-65.898438 28.828125c-3.109375 1.359375-5.023437 4.53125-4.773437 7.914063l2.621094 35.683593c-16.511719 12.753907-30.984376 27.945313-42.921876 45.054688l-35.636718-1.054688c-3.390625-.101562-6.476563 1.949219-7.699219 5.117188l-25.886719 67.09375c-1.214844 3.152344-.320312 6.730469 2.238282 8.9375l26.785156 23.105469c-2.296875 20.699219-1.761719 41.609375 1.601562 62.160156l-25.761718 24.714844c-2.421876 2.320312-3.136719 5.90625-1.789063 8.980469l28.839844 65.898437c1.359375 3.109375 4.53125 5.019531 7.914062 4.773437l35.671875-2.621093c12.757813 16.507812 27.953125 30.980469 45.0625 42.921875l-1.042968 35.636718c-.101563 3.390626 1.949218 6.476563 5.117187 7.699219l67.078125 25.890625c3.152344 1.214844 6.730469.320313 8.9375-2.238281l23.109375-26.785156c20.695313 2.300781 41.609375 1.761719 62.15625-1.597657l24.714844 25.757813c2.324219 2.421875 5.90625 3.136719 8.980469 1.792969l65.898437-28.832032c3.109375-1.359374 5.023437-4.53125 4.773437-7.914062l-2.621093-35.679688c16.511719-12.753906 30.984375-27.949218 42.921875-45.058593l35.636718 1.050781c3.394532.105469 6.484376-1.945312 7.699219-5.117188l25.890625-67.089843c1.214844-3.152344.320313-6.730469-2.238281-8.9375zm-9.765625 88.089843-34.351562-1.011719c-2.757813-.089843-5.367188 1.257813-6.890626 3.558594-12.195312 18.3125-27.488281 34.363282-45.183593 47.4375-2.207031 1.628906-3.421875 4.28125-3.222657 7.015625l2.527344 34.375-55.601562 24.324219-23.800782-24.800781c-1.855468-1.9375-4.5625-2.8125-7.203124-2.332031-21.707032 3.972656-43.902344 4.546874-65.789063 1.699218-2.667969-.347656-5.332031.671875-7.085937 2.707032l-22.210938 25.742187-56.542969-21.820313 1-34.351562c.082031-2.757812-1.261719-5.359375-3.554687-6.890625-18.3125-12.199219-34.359375-27.492187-47.433594-45.1875-1.632812-2.203125-4.28125-3.417969-7.019531-3.222656l-34.363281 2.527343-24.332032-55.597656 24.800782-23.792968c1.9375-1.863282 2.816406-4.570313 2.332031-7.214844-3.976563-21.707032-4.550781-43.902344-1.699219-65.789063.34375-2.667969-.671875-5.328125-2.707031-7.085937l-25.746094-22.210938 21.824219-56.550781 34.347656 1.011719c2.761719.089844 5.367188-1.257813 6.894531-3.558594 12.195313-18.3125 27.488281-34.363281 45.1875-47.433594 2.203125-1.632812 3.421875-4.28125 3.21875-7.019531l-2.527343-34.371094 55.601562-24.324219 23.792969 24.800782c1.859375 1.9375 4.570312 2.8125 7.210937 2.332031 21.714844-3.976563 43.914063-4.550781 65.800782-1.699219 2.667968.34375 5.332031-.671875 7.085937-2.707031l22.214844-25.742187 56.539062 21.824218-1 34.351563c-.078125 2.753906 1.265625 5.359375 3.558594 6.886719 18.308594 12.203124 34.355469 27.492187 47.429687 45.1875 1.632813 2.203124 4.28125 3.421874 7.019532 3.21875l34.363281-2.523438 24.332031 55.601562-24.808594 23.792969c-1.941406 1.859375-2.816406 4.566407-2.332031 7.207031 3.976563 21.710938 4.550781 43.90625 1.703125 65.789063-.347656 2.667969.671875 5.332031 2.707032 7.089844l25.734374 22.207031zm0 0"
                 fill="#083863"
               />
             </svg>
           </div>
+          <div class="icon-container">
+            <i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i>
+            <i class="fab fa-sass"></i> <i class="fab fa-bootstrap"></i>
+          </div>
         </div>
         <div class="projects-container">
-          <div class="pro project1"></div>
-          <div class="pro project2"></div>
-          <div class="pro project3"></div>
-          <div class="pro project4"></div>
-          <div class="pro project5"></div>
-          <div class="pro project6"></div>
-          <div class="pro project7"></div>
-          <div class="pro project8"></div>
-          <div class="pro project9"></div>
+          <div class="pro project1">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> Proccessing</b><br />
+                Tools: CSS Animations
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/proccessing" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project2">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> Benny's Burger</b><br />
+                Tools: Bootstrap & Sass
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/benny-s" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project3">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> Grid Message</b><br />
+                Tools: CSS Grid
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/grid-message" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project4">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> Responsive hero</b><br />
+                Tools: CSS Flexbox
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/responsive-hero" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project5">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> City Trips</b><br />
+                Tools: CSS Grid
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/city-trips" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project6">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> KPI List</b><br />
+                Tools: CSS Flexbox
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/kpi-list" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project7">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b>Ball animation</b><br />
+                Tools: CSS Animations
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/ball-animation" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project8">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b>Author Card</b><br />
+                Tools: CSS Flexbox
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/author-card" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
+          <div class="pro project9">
+            <div class="before ">
+              <p class="h2 mt-4 mx-3">
+                <b> Random </b><br />
+                Tools: Sass random & Css animations
+              </p>
+            </div>
+            <div class="after">
+              <a href="/Projects/random" class="h3">
+                <i>Go to page</i>
+                <i class="fas fa-angle-double-right"> </i
+              ></a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

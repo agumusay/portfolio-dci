@@ -155,6 +155,7 @@ html {
 body {
   position: relative;
   width: 100%;
+  height: 100vh;
   background-color: $color-active;
 }
 .jumbotron {
@@ -271,36 +272,43 @@ svg {
   transform: scale(0.9);
   transition: all 0.3s ease-in-out;
 
-  @include long-shadow(box, rgb(0, 149, 194), 20, false, false, left);
-  border: 3px outset rgba(255, 255, 255, 0.521);
+  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
 
-  &::after {
-    content: "";
+  & .after {
+    font-size: 2em;
     width: 100%;
-    height: 0%;
-    background-color: $color-passive;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    background-color: $color-button;
     position: absolute;
     bottom: 0;
-    display: block;
     transition: all 0.3s ease-in-out;
   }
 
-  &::before {
-    content: "";
+  & .before {
     width: 100%;
-    height: 0%;
+    transform: scaleY(0);
+    transform-origin: top;
     background-color: $color-button;
     position: absolute;
     top: 0;
     display: block;
     transition: all 0.3s ease-in-out;
+    text-align: left;
   }
 
-  &:hover::after {
+  &:hover .after {
     height: 40%;
+    transform: scaleY(1);
+
+    content: "Go to page";
+    color: orange;
   }
-  &:hover::before {
+  &:hover .before {
     height: 60%;
+    transform: scaleY(1);
+
+    border-bottom: 3px solid $color-passive;
   }
 }
 
@@ -312,9 +320,15 @@ svg {
 .projects-container {
   display: grid;
   grid-template: repeat(3, auto) / repeat(3, auto);
-  height: 100%;
-
+  height: 80%;
   width: 50%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
 }
 
 .lead,
@@ -326,7 +340,7 @@ p {
 .projects-header {
   color: $color-passive;
   padding: 0;
-  padding: 10px;
+  margin: 0;
 }
 
 @mixin center-image {
@@ -383,15 +397,17 @@ p {
 
 .gear {
   animation: turn 1s linear infinite;
-  width: 70%;
+  width: 80%;
 }
+
 .icon-container i {
-  font-size: 5em;
+  font-size: 4em;
+  margin: 10px 0px;
 }
 
 .icon-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: $color-button;
   @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
 }
@@ -403,5 +419,25 @@ p {
 @keyframes turn {
   to {
     transform: rotateZ(45deg);
+  }
+}
+
+.after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    &:hover {
+      text-decoration: none;
+      & i {
+        color: $color-active;
+      }
+    }
+    & i {
+      padding: 5px;
+    }
   }
 }
