@@ -10075,6 +10075,9 @@ svg {
 }
 
 .content-container {
+  box-sizing: border-box;
+  margin-left: 3vw;
+  margin-right: 3vw;
   display: flex;
   flex-direction: column;
   height: 79%;

@@ -59,25 +59,25 @@ h1 {
 }
 
 .img-1 {
-  background-image: url(./images/berlin.jpg);
+  background-image: url(../images/berlin.jpg);
   grid-area: i1;
 }
 .img-2 {
-  background-image: url(./images/prague.jpg);
+  background-image: url(../images/prague.jpg);
   grid-area: i2;
 }
 
 .img-3 {
-  background-image: url(./images/san-fran.jpg);
+  background-image: url(../images/san-fran.jpg);
   grid-area: i3;
 }
 .img-4 {
-  background-image: url(./images/paris.jpg);
+  background-image: url(../images/paris.jpg);
   grid-area: i4;
 }
 
 .img-5 {
-  background-image: url(./images/amsterdam.jpg);
+  background-image: url(../images/amsterdam.jpg);
   grid-area: i5;
 }
 
