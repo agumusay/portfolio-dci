@@ -4,9 +4,8 @@ html {
 
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -60,28 +59,27 @@ h1 {
 }
 
 .img-1 {
-  background-image: url(/images/berlin.jpg);
+  background-image: url(./images/berlin.jpg);
   grid-area: i1;
 }
 .img-2 {
-  background-image: url(/images/prague.jpg);
+  background-image: url(./images/prague.jpg);
   grid-area: i2;
 }
 
 .img-3 {
-  background-image: url(/images/san-fran.jpg);
+  background-image: url(./images/san-fran.jpg);
   grid-area: i3;
 }
 .img-4 {
-  background-image: url(/images/paris.jpg);
+  background-image: url(./images/paris.jpg);
   grid-area: i4;
 }
 
 .img-5 {
-  background-image: url(/images/amsterdam.jpg);
+  background-image: url(./images/amsterdam.jpg);
   grid-area: i5;
 }
-
 
 p {
   color: white;
@@ -94,30 +92,26 @@ p {
     grid-template-columns: 40px repeat(4, 1fr) 40px;
     grid-template-rows: 20px 60px repeat(4, 1fr) 20px;
     grid-template-areas:
-    ". . . . . ."
-    ". . head head . ."
-    ". i1 i1 i1 i1 ."
-    ". i1 i1 i1 i1 ."
-    ". i2 i2 i3 i3 ."
-    ". i4 i4 i5 i5 ."
-    ". . . . . . ";
+      ". . . . . ."
+      ". . head head . ."
+      ". i1 i1 i1 i1 ."
+      ". i1 i1 i1 i1 ."
+      ". i2 i2 i3 i3 ."
+      ". i4 i4 i5 i5 ."
+      ". . . . . . ";
   }
+}
 
-
- 
-  }
-
-
-  @media screen and (min-width: 1200px) {
-    main {
-        grid-template-columns: 40px repeat(4, 1fr) 40px;
+@media screen and (min-width: 1200px) {
+  main {
+    grid-template-columns: 40px repeat(4, 1fr) 40px;
     grid-template-rows: 5px 60px repeat(3, 1fr) 20px;
-      grid-template-areas:
+    grid-template-areas:
       ". . . . . ."
       ". . head head . ."
       ". i1 i1 i1 i2 ."
       ". i1 i1 i1 i3 ."
       ". i4 i4 i5 i5 ."
       ". . . . . . ";
-    }
+  }
 }
