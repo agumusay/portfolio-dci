@@ -9835,6 +9835,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+* {
+  box-sizing: border-box !important;
+}
+
 h1,
 h2,
 h3,
@@ -9857,6 +9861,7 @@ html {
 body {
   position: relative;
   width: 100%;
+  height: 100vh;
   background-color: #00b8f0;
 }
 
@@ -9865,7 +9870,7 @@ body {
 }
 
 section {
-  height: 92vh;
+  height: 90vh;
   background-color: #00b8f0;
 }
 
@@ -10026,67 +10031,65 @@ svg {
 }
 
 .pro {
-  background: orange;
+  background: linear-gradient(#bb2121, #2538a3);
   margin: 0;
   z-index: 3;
   position: relative;
-  transform: scale(0.8);
+  transform: scale(0.9);
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
 }
-.pro::after {
-  content: "";
+.pro .after {
+  font-size: 2em;
   width: 100%;
-  height: 0%;
-  background-color: #003366;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  background-color: orange;
   position: absolute;
   bottom: 0;
-  display: block;
   transition: all 0.3s ease-in-out;
 }
-.pro::before {
-  content: "";
+.pro .before {
   width: 100%;
-  height: 0%;
+  transform: scaleY(0);
+  transform-origin: top;
   background-color: orange;
   position: absolute;
   top: 0;
   display: block;
   transition: all 0.3s ease-in-out;
+  text-align: left;
 }
-.pro:hover::after {
+.pro:hover .after {
   height: 40%;
+  transform: scaleY(1);
+  content: "Go to page";
+  color: orange;
 }
-.pro:hover::before {
+.pro:hover .before {
   height: 60%;
-}
-.pro:hover {
-  transform: scale(1);
-  flex-shrink: 0;
+  transform: scaleY(1);
+  border-bottom: 3px solid #003366;
 }
 
 #projects {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 200px;
 }
 
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(12, minmax(200px, 300px));
-  grid-template-rows: minmax(300px, 500px);
-  grid-gap: 10px;
-  height: 100%;
-  perspective: 500px;
-  width: 80%;
-  padding-left: 5px;
-  overflow: hidden;
-  overflow-x: scroll;
-  margin-top: 100px;
+  grid-template: repeat(3, auto)/repeat(3, auto);
+  height: 80%;
+  width: 50%;
 }
 
-.pro {
-  background-color: red;
+.content-container {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
 }
 
 .lead,
@@ -10097,12 +10100,124 @@ p {
 
 .projects-header {
   color: #003366;
-  background-color: orange;
   padding: 0;
-  display: inline-block;
-  height: 2rem;
-  padding: 10px;
+  margin: 0;
+}
+
+.project1 {
+  background: url(/images/proccessing.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project2 {
+  background: url(/images/bennys-burger.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project3 {
+  background: url(/images/grid-message.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project4 {
+  background: url(/images/responsive-hero.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project5 {
+  background: url(/images/city-trips.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project6 {
+  background: url(/images/kpi-list.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project7 {
+  background: url(/images/ball-animation.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project8 {
+  background: url(/images/author-card.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project9 {
+  background: url(/images/random-bars.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.project10 {
+  background: url(/images/travel-form.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.gear {
+  animation: turn 1s linear infinite;
+  width: 80%;
+}
+
+.icon-container i {
+  font-size: 4em;
+  margin: 10px 0px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: orange;
   box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
+}
+
+.circle {
+  opacity: 0;
+}
+
+@keyframes turn {
+  to {
+    transform: rotateZ(45deg);
+  }
+}
+.after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.after a {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.after a:hover {
+  text-decoration: none;
+}
+.after a:hover i {
+  color: #00b8f0;
+}
+.after a i {
+  padding: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */
