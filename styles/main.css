@@ -10018,18 +10018,6 @@ svg {
     opacity: 1;
   }
 }
-.shadowc {
-  position: absolute;
-  width: 100%;
-  height: 10%;
-  background-color: #363636;
-  bottom: -50px;
-  transform: rotateX(60deg);
-  border-radius: 30%;
-  filter: blur(15px);
-  transition: all 0.3s ease-in-out;
-}
-
 .pro {
   background: linear-gradient(#bb2121, #2538a3);
   margin: 0;
