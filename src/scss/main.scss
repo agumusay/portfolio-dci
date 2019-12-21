@@ -1,140 +1,19 @@
 // This is where you can import other stylesheets or write your scss code
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "mixins";
+
 * {
   box-sizing: border-box !important;
 }
 $enable-responsive-font-sizes: true;
 $grid-columns: 14;
 $grid-gutter-width: 0px;
-
-@mixin center-absolute {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin delay($rule, $number, $value) {
-  @for $i from 1 to ($number) {
-    &:nth-child(#{$i}) {
-      -webkit-#{$rule}-delay: (#{$i * $value});
-      #{$rule}-delay: (#{$i * $value});
-    }
-  }
-}
-
-@mixin long-shadow(
-  $type,
-  $color,
-  $length,
-  $fadeout: true,
-  $skew: false,
-  $direction: right
-) {
-  $shadow: "";
-  @if $skew == false or $type == text {
-    @if $direction == right {
-      @for $i from 0 to $length - 1 {
-        $shadow: $shadow + $i + "px " + $i + "px 0 " + $color + ",";
-      }
-    }
-    @if $direction == left {
-      @for $i from 0 to $length - 1 {
-        $shadow: $shadow + $i * -1 + "px " + $i + "px 0 " + $color + ",";
-      }
-    }
-  }
-
-  @if $fadeout == true {
-    @for $i from 1 to $length - 1 {
-      @if $type == text or $skew == false {
-        @if $direction == right {
-          $shadow: $shadow +
-            $i +
-            "px " +
-            $i +
-            "px 0 " +
-            rgba($color, 1 - $i / $length) +
-            ",";
-        }
-        @if $direction == left {
-          $shadow: $shadow +
-            $i *
-            -1 +
-            "px " +
-            $i +
-            "px 0 " +
-            rgba($color, 1 - $i / $length) +
-            ",";
-        }
-      }
-      @if ($type == box) and $skew == true {
-        @if $direction == right {
-          $shadow: $shadow +
-            $i +
-            "px " +
-            $i +
-            "px 0 " +
-            $i *
-            0.2 +
-            "px " +
-            rgba($color, 1 - $i / $length) +
-            ",";
-        }
-        @if $direction == left {
-          $shadow: $shadow +
-            $i *
-            -1 +
-            "px " +
-            $i +
-            "px 0 " +
-            $i *
-            0.2 +
-            "px " +
-            rgba($color, 1 - $i / $length) +
-            ",";
-        }
-      }
-    }
-    $shadow: $shadow + $length + "px " + $length + "px 0 " + rgba($color, 0);
-  }
-  @if $fadeout == false {
-    @if $skew == true and ($type == box) {
-      @for $i from 0 to $length - 1 {
-        $shadow: $shadow +
-          $i +
-          "px " +
-          $i +
-          "px 0 " +
-          $i *
-          0.1 +
-          "px " +
-          $color +
-          ",";
-      }
-    }
-    $shadow: $shadow + $length + "px " + $length + "px 0 " + rgba(0, 0, 0, 0);
-  }
-  $shadow: unquote($shadow);
-  @if $type == "box" {
-    box-shadow: $shadow;
-  }
-  @if $type == "text" {
-    text-shadow: $shadow;
-  }
-}
 $color-passive: hsl(210, 100%, 20%);
 $color-active: hsl(194, 100%, 47%);
 $color-button: orange;
 $font-header: "Orbitron";
 $font-second: monospace;
-@mixin font-shadow {
-  text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0, hsla(0, 0%, 100%, 0.6) 0 2px 1px;
-}
 
-@mixin etch-shadow {
-  box-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0, hsla(0, 0%, 100%, 0.6) 0 2px 1px;
-}
 h1,
 h2,
 h3,
@@ -151,28 +30,46 @@ h6 {
 }
 html {
   background-color: $color-active;
+  height: 100%;
 }
+
 body {
   position: relative;
   width: 100%;
   height: 100vh;
   background-color: $color-active;
 }
-.jumbotron {
-  background-color: $color-active;
-}
+
 section {
   height: 90vh;
   background-color: $color-active;
 }
+
 .hero {
   margin-top: 150px;
 }
+
+.jumbotron {
+  background-color: $color-active;
+  & .display-4 {
+    font-family: $font-header;
+    color: $color-button;
+    @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
+  }
+  & .d-flex {
+    background-color: $color-button;
+    @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
+  }
+  & .lead {
+    @include font-shadow;
+    color: $color-passive;
+  }
+}
+
 #myScrollSpy {
   position: fixed;
   right: 0;
   height: 100vh;
-  z-index: 2;
   background-color: $color-passive;
 }
 
@@ -186,224 +83,216 @@ section {
   transition: all 0.2s ease-in-out;
   transform: scale(0.7);
   padding: 20px;
+  & i {
+    font-size: 2.5vh;
+    @include font-shadow;
+    color: $color-passive;
+    &:hover {
+      color: $color-active;
+    }
+  }
 }
 .links {
   font-size: 1.4rem;
-}
-i {
-  font-size: 1.3em;
-  @include font-shadow;
-  color: $color-passive;
-}
-i:hover {
-  color: $color-active;
-}
-
-.links i {
-  font-size: 3rem;
+  & i {
+    font-size: 3rem;
+  }
+  &:active {
+    transform: scale(0.6);
+    box-shadow: none;
+  }
 }
 
 .active {
   transform: scale(0.9);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.486),
     0px 0px 15px rgba(0, 0, 0, 0.534);
+  & i {
+    color: $color-active;
+    text-shadow: 0px 0px 5px rgb(255, 255, 255);
+  }
 }
 
-.active i {
-  color: $color-active;
-  text-shadow: 0px 0px 5px rgb(255, 255, 255);
-}
-.links:active {
-  transform: scale(0.6);
-  box-shadow: none;
-}
-
-.display-4 {
-  font-family: $font-header;
-  color: $color-button;
-  @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
-}
-
-.d-flex {
-  background-color: $color-button;
-  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
-}
 svg {
   overflow: hidden;
+  & .red-bar {
+    animation: first-svg-animation 0.8s linear infinite;
+    @include delay(animation, 14, 0.2s);
+    opacity: 0;
+  }
+  & .square {
+    opacity: 0;
+    animation: first-svg-animation 1s linear infinite;
+  }
 }
-.red-bar {
-  animation: first-svg-animation 0.8s linear infinite;
-  @include delay(animation, 14, 0.2s);
-  opacity: 0;
+.img-svg2 {
+  grid-row: 2 / span 4;
 }
-
-.square {
-  opacity: 0;
-  animation: second-svg-animation 1s linear infinite;
+.gear {
+  animation: turn 1s linear infinite;
+  & .circle {
+    opacity: 0;
+  }
 }
-
 @keyframes first-svg-animation {
   to {
     opacity: 1;
   }
 }
 
-@keyframes second-svg-animation {
-  to {
-    opacity: 1;
-  }
-}
-
-.pro {
-  background: linear-gradient(rgb(187, 33, 33), rgb(37, 56, 163));
-  margin: 0;
-  z-index: 3;
-  position: relative;
-  transform: scale(0.9);
-  transition: all 0.3s ease-in-out;
-
-  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
-
-  & .after {
-    font-size: 2em;
-    width: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    background-color: $color-button;
-    position: absolute;
-    bottom: 0;
-    transition: all 0.3s ease-in-out;
-  }
-
-  & .before {
-    width: 100%;
-    transform: scaleY(0);
-    transform-origin: top;
-    background-color: $color-button;
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: all 0.3s ease-in-out;
-    text-align: left;
-  }
-
-  &:hover .after {
-    height: 40%;
-    transform: scaleY(1);
-
-    content: "Go to page";
-    color: orange;
-  }
-  &:hover .before {
-    height: 60%;
-    transform: scaleY(1);
-
-    border-bottom: 3px solid $color-passive;
-  }
-}
-
 #projects {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 200px;
-}
-.projects-container {
-  display: grid;
-  grid-template: repeat(3, auto) / repeat(3, auto);
-  height: 80%;
-  width: 50%;
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  height: 80%;
   justify-content: space-around;
-}
+  margin-top: 200px;
+  & .projects-header {
+    color: $color-passive;
+    padding: 0;
+    margin: 0;
+  }
+  & .projects-container {
+    display: grid;
+    grid-template: repeat(3, auto) / repeat(3, auto);
+    height: 90%;
+    width: 50%;
+    & .pro {
+      margin: 0;
+      z-index: 3;
+      position: relative;
+      transform: scale(0.9);
+      transition: all 0.3s ease-in-out;
+      @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
+      & .after {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        width: 100%;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        background-color: $color-button;
+        position: absolute;
+        bottom: 0;
+        transition: all 0.3s ease-in-out;
+        & .pro-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          &:hover {
+            text-decoration: none;
+            & i {
+              color: $color-active;
+              font-size: 1.5vw;
+            }
+          }
+          & i {
+            padding: 5px;
+          }
+        }
+      }
 
-.lead,
-p {
-  @include font-shadow;
-  color: $color-passive;
-}
+      & .before {
+        width: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+        background-color: $color-button;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        text-align: left;
+        & .pro-text {
+          font-size: 1.3vw;
+        }
+      }
 
-.projects-header {
-  color: $color-passive;
-  padding: 0;
-  margin: 0;
-}
+      &:hover .after {
+        height: 40%;
+        transform: scaleY(1);
+        content: "Go to page";
+        color: orange;
+      }
+      &:hover .before {
+        height: 60%;
+        transform: scaleY(1);
+        border-bottom: 3px solid $color-passive;
+      }
+    }
+  }
+  & .content-container {
+    box-sizing: border-box;
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(6, auto);
+    height: 90%;
 
-@mixin center-image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+    & .display-4 {
+      font-family: $font-header;
+      color: $color-button;
+      @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
+      grid-row: 1;
+    }
+    & .icon-container {
+      grid-row: 6;
+      display: flex;
+      justify-content: space-around;
+      background-color: $color-button;
+      @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
+      & i {
+        font-size: 4.5vw;
+        margin: 10px 0px;
+      }
+    }
+  }
 }
 
 .project1 {
-  background: url(/images/proccessing.gif);
+  background: url(../images/proccessing.gif);
   @include center-image;
 }
 .project2 {
-  background: url(/images/bennys-burger.gif);
+  background: url(../images/bennys-burger.gif);
   @include center-image;
 }
 
 .project3 {
-  background: url(/images/grid-message.gif);
+  background: url(../images/grid-message.gif);
   @include center-image;
 }
 
 .project4 {
-  background: url(/images/responsive-hero.gif);
+  background: url(../images/responsive-hero.gif);
   @include center-image;
 }
 .project5 {
-  background: url(/images/city-trips.gif);
+  background: url(../images/city-trips.gif);
   @include center-image;
 }
 
 .project6 {
-  background: url(/images/kpi-list.gif);
+  background: url(../images/kpi-list.gif);
   @include center-image;
 }
 .project7 {
-  background: url(/images/ball-animation.gif);
+  background: url(../images/ball-animation.gif);
   @include center-image;
 }
 .project8 {
-  background: url(/images/author-card.gif);
+  background: url(../images/author-card.gif);
   @include center-image;
 }
 
 .project9 {
-  background: url(/images/random-bars.gif);
+  background: url(../images/random-bars.gif);
   @include center-image;
 }
 
 .project10 {
-  background: url(/images/travel-form.gif);
+  background: url(../images/travel-form.gif);
   @include center-image;
-}
-
-.gear {
-  animation: turn 1s linear infinite;
-  width: 80%;
-}
-
-.icon-container i {
-  font-size: 4em;
-  margin: 10px 0px;
-}
-
-.icon-container {
-  display: flex;
-  justify-content: space-around;
-  background-color: $color-button;
-  @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
-}
-
-.circle {
-  opacity: 0;
 }
 
 @keyframes turn {
@@ -412,22 +301,9 @@ p {
   }
 }
 
-.after {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  & a {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    &:hover {
-      text-decoration: none;
-      & i {
-        color: $color-active;
-      }
-    }
-    & i {
-      padding: 5px;
-    }
-  }
+.headers {
+  font-size: 4.5vw;
+  font-family: $font-header;
+  color: $color-button;
+  @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
 }
