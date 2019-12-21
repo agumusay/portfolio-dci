@@ -9866,12 +9866,8 @@ body {
 }
 
 section {
-  height: 90vh;
+  height: 100vh;
   background-color: #00b8f0;
-}
-
-.hero {
-  margin-top: 150px;
 }
 
 .jumbotron {
@@ -9887,22 +9883,22 @@ section {
   box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
 }
 .jumbotron .lead {
-  text-shadow: rgba(102, 102, 102, 0.5) 0 -1px 0, rgba(255, 255, 255, 0.6) 0 2px 1px;
-  color: #003366;
+  color: #ea6148;
+  font-weight: bold;
+  font-size: 3vh;
 }
 
 #myScrollSpy {
   position: fixed;
   right: 0;
   height: 100vh;
-  z-index: 2;
   background-color: #003366;
 }
 
 .nav-link {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   background-color: orange;
@@ -9940,7 +9936,7 @@ section {
 }
 
 svg {
-  overflow: hidden;
+  height: 40vh;
 }
 svg .red-bar {
   animation: first-svg-animation 0.8s linear infinite;
@@ -10003,80 +9999,50 @@ svg .square {
   animation: first-svg-animation 1s linear infinite;
 }
 
-.gear {
-  animation: turn 1s linear infinite;
-}
-.gear .circle {
-  opacity: 0;
-}
-
-@keyframes first-svg-animation {
-  to {
-    opacity: 1;
-  }
-}
-.pro {
-  background: linear-gradient(#bb2121, #2538a3);
-  margin: 0;
-  z-index: 3;
-  position: relative;
-  transform: scale(0.9);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
-}
-.pro .after {
-  font-size: 2em;
-  width: 100%;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  background-color: orange;
-  position: absolute;
-  bottom: 0;
-  transition: all 0.3s ease-in-out;
-}
-.pro .before {
-  width: 100%;
-  transform: scaleY(0);
-  transform-origin: top;
-  background-color: orange;
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-  text-align: left;
-}
-.pro:hover .after {
-  height: 40%;
-  transform: scaleY(1);
-  color: orange;
-}
-.pro:hover .before {
-  height: 60%;
-  transform: scaleY(1);
-  border-bottom: 3px solid #003366;
-}
-
 #projects {
   display: flex;
   justify-content: space-around;
-  margin-top: 200px;
 }
-#projects .projects-header {
-  color: #003366;
-  padding: 0;
-  margin: 0;
+#projects .content-container {
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  grid-template-rows: repeat(6, auto);
+  height: 90%;
+}
+#projects .content-container .display-4 {
+  font-family: "Orbitron";
+  color: orange;
+  text-shadow: 0px 0px 0 #6e4800,1px 1px 0 #6e4800,2px 2px 0 #6e4800,3px 3px 0 #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
+  grid-row: 1;
+}
+#projects .content-container .img-svg2 {
+  grid-row: 2/span 4;
+}
+#projects .content-container .img-svg2 .gear {
+  animation: turn 1s linear infinite;
+}
+#projects .content-container .img-svg2 .gear .circle {
+  opacity: 0;
+}
+#projects .content-container .icon-container {
+  grid-row: 6;
+  display: flex;
+  justify-content: space-around;
+  background-color: orange;
+  box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
+}
+#projects .content-container .icon-container i {
+  font-size: 4.5vw;
+  margin: 10px 0px;
 }
 #projects .projects-container {
   display: grid;
   grid-template: repeat(3, auto)/repeat(3, auto);
-  height: 80%;
+  height: 90%;
   width: 50%;
 }
 #projects .projects-container .pro {
-  background: linear-gradient(#bb2121, #2538a3);
   margin: 0;
   z-index: 3;
   position: relative;
@@ -10088,9 +10054,9 @@ svg .square {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2em;
+  font-size: 2vh;
   width: 100%;
-  height: 40%;
+  transform: scaleY(0);
   transform-origin: bottom;
   background-color: orange;
   position: absolute;
@@ -10108,14 +10074,13 @@ svg .square {
 }
 #projects .projects-container .pro .after .pro-link:hover i {
   color: #00b8f0;
-  font-size: 1.5vw;
 }
 #projects .projects-container .pro .after .pro-link i {
-  padding: 5px;
+  padding: 3px;
 }
 #projects .projects-container .pro .before {
   width: 100%;
-  height: 60%;
+  transform: scaleY(0);
   transform-origin: top;
   background-color: orange;
   position: absolute;
@@ -10140,23 +10105,6 @@ svg .square {
   height: 60%;
   transform: scaleY(1);
   border-bottom: 3px solid #003366;
-}
-#projects .content-container {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 79%;
-  justify-content: space-evenly;
-}
-#projects .content-container .icon-container {
-  display: flex;
-  justify-content: space-around;
-  background-color: orange;
-  box-shadow: 0px 0px 0 0px #6e4800,1px 1px 0 0.1px #6e4800,2px 2px 0 0.2px #6e4800,3px 3px 0 0.3px #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
-}
-#projects .content-container .icon-container i {
-  font-size: 4em;
-  margin: 10px 0px;
 }
 
 .project1 {
@@ -10232,6 +10180,63 @@ svg .square {
 @keyframes turn {
   to {
     transform: rotateZ(45deg);
+  }
+}
+@keyframes first-svg-animation {
+  to {
+    opacity: 1;
+  }
+}
+.headers {
+  font-size: 7vh;
+  font-family: "Orbitron";
+  color: orange;
+  text-shadow: 0px 0px 0 #6e4800,1px 1px 0 #6e4800,2px 2px 0 #6e4800,3px 3px 0 #6e4800,5px 5px 0 rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    margin: 0;
+    padding: 0;
+  }
+
+  #myScrollSpy {
+    visibility: hidden;
+    z-index: 5;
+  }
+  #myScrollSpy .nav-link {
+    visibility: visible;
+    background-color: #003366;
+    border-radius: 50%;
+    transform: scale(0.3);
+  }
+  #myScrollSpy .nav-link i {
+    visibility: hidden;
+  }
+  #myScrollSpy .active {
+    background-color: #ea6148;
+    transform: scale(0.4);
+  }
+
+  #projects {
+    flex-direction: column;
+  }
+  #projects .content-container {
+    margin-top: 350px;
+  }
+  #projects .content-container .display-4 {
+    grid-row: 2;
+  }
+  #projects .content-container .img-svg2 {
+    grid-row: 1;
+  }
+  #projects .content-container .icon-container {
+    grid-row: 3;
+  }
+  #projects .projects-container {
+    width: auto;
+    grid-template: repeat(9, 300px)/repeat(1, 50vh);
+    justify-content: center;
   }
 }
 
