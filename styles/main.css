@@ -10067,6 +10067,7 @@ svg .square {
   align-items: center;
   justify-content: center;
   width: 100%;
+  font-family: "Orbitron";
 }
 #projects .projects-container .pro .after .pro-link:hover {
   text-decoration: none;
@@ -10214,7 +10215,7 @@ svg .square {
     visibility: hidden;
   }
   #myScrollSpy .active {
-    background-color: #ea6148;
+    background-color: orange;
     transform: scale(0.4);
   }
 
