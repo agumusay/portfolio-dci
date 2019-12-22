@@ -11,6 +11,7 @@ $grid-gutter-width: 0px;
 $color-passive: hsl(210, 100%, 20%);
 $color-active: hsl(194, 100%, 47%);
 $color-button: orange;
+$color-warning: #ea6148;
 $font-header: "Orbitron";
 $font-second: monospace;
 
@@ -30,23 +31,17 @@ h6 {
 }
 html {
   background-color: $color-active;
-  height: 100%;
 }
 
 body {
   position: relative;
   width: 100%;
-  height: 100vh;
   background-color: $color-active;
 }
 
 section {
-  height: 90vh;
   background-color: $color-active;
-}
-
-.hero {
-  margin-top: 150px;
+  height: 100vh;
 }
 
 .jumbotron {
@@ -61,8 +56,9 @@ section {
     @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
   }
   & .lead {
-    @include font-shadow;
-    color: $color-passive;
+    color: $color-warning;
+    font-weight: bold;
+    font-size: 3vh;
   }
 }
 
@@ -74,9 +70,9 @@ section {
 }
 
 .nav-link {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   background-color: $color-button;
@@ -114,7 +110,7 @@ section {
 }
 
 svg {
-  overflow: hidden;
+  height: 40vh;
   & .red-bar {
     animation: first-svg-animation 0.8s linear infinite;
     @include delay(animation, 14, 0.2s);
@@ -125,35 +121,55 @@ svg {
     animation: first-svg-animation 1s linear infinite;
   }
 }
-.img-svg2 {
-  grid-row: 2 / span 4;
-}
-.gear {
-  animation: turn 1s linear infinite;
-  & .circle {
-    opacity: 0;
-  }
-}
-@keyframes first-svg-animation {
-  to {
-    opacity: 1;
-  }
-}
 
 #projects {
   display: flex;
   justify-content: space-around;
-  margin-top: 200px;
-  & .projects-header {
-    color: $color-passive;
-    padding: 0;
-    margin: 0;
+
+  & .content-container {
+    box-sizing: border-box;
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(6, auto);
+    height: 90%;
+
+    & .display-4 {
+      font-family: $font-header;
+      color: $color-button;
+      @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
+      grid-row: 1;
+    }
+
+    & .img-svg2 {
+      grid-row: 2 / span 4;
+      & .gear {
+        animation: turn 1s linear infinite;
+
+        & .circle {
+          opacity: 0;
+        }
+      }
+    }
+
+    & .icon-container {
+      grid-row: 6;
+      display: flex;
+      justify-content: space-around;
+      background-color: $color-button;
+      @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
+      & i {
+        font-size: 4.5vw;
+        margin: 10px 0px;
+      }
+    }
   }
+
   & .projects-container {
     display: grid;
     grid-template: repeat(3, auto) / repeat(3, auto);
     height: 90%;
     width: 50%;
+
     & .pro {
       margin: 0;
       z-index: 3;
@@ -165,7 +181,7 @@ svg {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 2em;
+        font-size: 3.5vh;
         width: 100%;
         transform: scaleY(0);
         transform-origin: bottom;
@@ -178,15 +194,15 @@ svg {
           align-items: center;
           justify-content: center;
           width: 100%;
+          font-family: $font-header;
           &:hover {
             text-decoration: none;
             & i {
               color: $color-active;
-              font-size: 1.5vw;
             }
           }
           & i {
-            padding: 5px;
+            padding: 3px;
           }
         }
       }
@@ -205,7 +221,7 @@ svg {
         transition: all 0.3s ease-in-out;
         text-align: left;
         & .pro-text {
-          font-size: 1.3vw;
+          font-size: 3vh;
         }
       }
 
@@ -215,35 +231,11 @@ svg {
         content: "Go to page";
         color: orange;
       }
+
       &:hover .before {
         height: 60%;
         transform: scaleY(1);
         border-bottom: 3px solid $color-passive;
-      }
-    }
-  }
-  & .content-container {
-    box-sizing: border-box;
-    display: grid;
-    align-items: center;
-    grid-template-rows: repeat(6, auto);
-    height: 90%;
-
-    & .display-4 {
-      font-family: $font-header;
-      color: $color-button;
-      @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
-      grid-row: 1;
-    }
-    & .icon-container {
-      grid-row: 6;
-      display: flex;
-      justify-content: space-around;
-      background-color: $color-button;
-      @include long-shadow(box, rgb(110, 72, 0), 5, false, true, right);
-      & i {
-        font-size: 4.5vw;
-        margin: 10px 0px;
       }
     }
   }
@@ -300,10 +292,74 @@ svg {
     transform: rotateZ(45deg);
   }
 }
+@keyframes first-svg-animation {
+  to {
+    opacity: 1;
+  }
+}
 
 .headers {
-  font-size: 4.5vw;
+  font-size: 7vh;
   font-family: $font-header;
   color: $color-button;
   @include long-shadow(text, rgb(110, 72, 0), 5, false, true, right);
+}
+
+@media screen and(max-width: 768px) {
+  section {
+    margin: 0;
+    padding: 0;
+    height: auto;
+  }
+  #myScrollSpy {
+    visibility: hidden;
+    z-index: 5;
+    & .nav-link {
+      visibility: visible;
+      background-color: $color-passive;
+      border-radius: 50%;
+      transform: scale(0.3);
+
+      & i {
+        visibility: hidden;
+      }
+    }
+    & .active {
+      background-color: $color-button;
+      transform: scale(0.4);
+    }
+  }
+
+  #projects {
+    flex-direction: column;
+
+    & .content-container {
+      & .display-4 {
+        grid-row: 1;
+      }
+      & .img-svg2 {
+        display: none;
+      }
+      & .icon-container {
+        grid-row: 2;
+        margin-top: 10px;
+      }
+    }
+    & .projects-container {
+      margin-top: 30px;
+      width: auto;
+      grid-template: repeat(9, 300px) / repeat(1, 50vh);
+      justify-content: center;
+    }
+  }
+}
+
+footer {
+  background-color: $color-passive;
+  & * {
+    color: $color-warning;
+    text-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
 }
